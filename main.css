@@ -472,11 +472,11 @@ body {
 }
 .modal-gallery__close:hover {
   cursor: pointer;
-  content: url("../images/icon-close-white.svg");
+  content: url("/images/icon-close-white.svg");
 }
 .modal-gallery__image-container {
   position: relative;
-  background-image: url("../images/image-product-1.jpg");
+  background-image: url("/images/image-product-1.jpg");
   height: 446px;
   background-size: cover;
   border-radius: 1rem;
