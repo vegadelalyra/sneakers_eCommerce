@@ -1,0 +1,28 @@
+@use 'initial';
+@use 'var';
+@use 'header';
+@use 'navbar';
+@use 'modal-navbar';
+@use 'gallery';
+@use 'details';
+@use 'input';
+@use 'modal-cart';
+@use 'modal-gallery';
+
+.main-container {
+    width: 375px;
+    margin: auto;
+    position: relative;
+
+    @media (min-width: 1115px) {
+        width: 77.3vw;
+    }
+}
+
+.content {
+    @media (min-width: 1115px) {
+        display: flex;
+        padding: 45px 50px;
+        gap: 124px;
+    }
+}

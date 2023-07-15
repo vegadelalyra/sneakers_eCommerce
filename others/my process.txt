@@ -1,0 +1,84 @@
+Firstable, decide whether design you want to start
+are you gonna choose the mobile or desktop first approach?
+statistically, the former makes more sense.
+
+HTML structures shall always 
+being displayed on prime containers.
+search for these containers to be semantic tags.
+
+Don't be creative, it wastes time, 
+specially for styles and names.
+Unless you got a bunch of free time,
+don't waste yourself gettin creative on css
+there's an ocean of frameworks, libraries and 
+predesigned mockups for you to just get a clear product.
+
+For HTML attributes names: User inheritance
+How? If the container is called "main_container"
+then the children should be called "main__items"
+and the granchildren should be called "main__item"
+and that would be the logic: create bored families,
+not uniques crazy non-structured names for each element.
+
+MODAL: 
+pop up elements that takes off the focus from main page
+ex.: my sprint 1 sign up/in screen, the burger menus, etc.
+
+Actually, to call by a family-tree-logic way the HTMLEls
+has a name: it is called => BEM (BLOCK ELEMENT MODIFICATOR)
+block__element--modificator.
+
+Inserting images from CSS or SASS SCSS (which are the same)
+will provide you more control over the img than attaching it
+inside an image tag html element.
+
+SASS: Preloads CSS providing it with superpowers.
+Among all, it includes modules!
+which will make easier to stylize frontend websites.
+
+HOW TO USE SASS:
+You install it as a node package. 
+
+npm i -g/'' sass 
+
+You create a sass folder and a styles.scss file 
+Then, from terminal, you preload the css with sass 
+with this command: 
+
+sass [path-to-styles.scss] main.css
+
+that will create a main.css file in the root path
+and that main.css is going to be linked to the scss file
+everytime you change the sass file, css will be changed 
+after you execute the [sass path css] command
+there's a live server for this, though:
+
+sass path css --watch
+
+Always do this since browsers spaces content.
+* {
+    padding: 0;
+    margin: 0;
+}
+
+Always work secuentially:
+first HTML 
+then CSS
+then JS  
+always from top to bottom 
+
+¡¡¡HOW TO RAPIDLY CENTER CONTAINERS? MARGIN: AUTO!!!
+
+margin: auto; /* top and bottom: 0 margin     */
+/* Box is horizontally centered */
+margin: auto == margin: 0 auto 0 auto == 0 auto
+
+to the display:in-line elements you cannot
+change its height nor width, you would need
+to change it to display:block
+
+A GREAT AIM WHILST STYLING ELEMENTS:
+add 
+border: 2px solid red 
+so you can understand better 
+how you manipulate the container's content
