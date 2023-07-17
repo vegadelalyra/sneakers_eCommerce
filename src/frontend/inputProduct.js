@@ -52,25 +52,31 @@ const cartIconBtn = document.querySelector('.header__cart')
 const cartModal = document.querySelector('.cart-modal')
 const priceModal = document.querySelector('.cart-modal__price')
 
-cartIconBtn.onmouseover = () => {
+cartIconBtn.onmouseover = function() {
     if (cartModal.classList.contains('show')) return 
     cartModal.style.display = 'block'
+
+    document.querySelector('main').onmouseout = e => {
+        if (e.target.attributes.class?.value.includes('header')
+        || cartModal.classList.contains('show')) return
+
+        cartModal.style.display = 'none'
+    }
 }
 
-cartIconBtn.onmouseout = () => {
-    if (cartModal.classList.contains('show')) return 
-    cartModal.style.display = 'none'
-}
-
-cartIconBtn.onclick = () => {
+cartIconBtn.onclick = function() {
     cartModal.classList.toggle('show')
+
+    this.children[1].src.includes('orange')
+    ? this.children[1].src = './images/icon-cart.svg' 
+    : this.children[1].src = './images/icon-cart-orange.svg'
 
     // if (lastValue == 0) productContainer.innerHTML = '<p class="cart-empty">\
     // Your cart is empty</p>'
 }
 // [ CART MODAL ] ENDING
 
-// [ DELETE CART ] BEGINNING
+// [ DELETE PRODUCT FROM CART ] BEGINNING
 const deleteProductBtn = document.querySelector('.cart-modal__delete')
 const productContainer = document.querySelector('.cart-modal__checkout-container')
 
@@ -80,4 +86,4 @@ deleteProductBtn.onclick = () => {
 
     cartNotification.innerText = lastValue = 0
 }
-// [ DELETE CART ] ENDING
+// [ DELETE PRODUCT FROM CART ] ENDING

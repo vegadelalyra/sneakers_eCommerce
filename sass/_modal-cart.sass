@@ -4,13 +4,17 @@
 .cart-modal 
     display: none
     width: 360px
-    height: 260px
     border-radius: 0.5rem
     box-shadow: 3px 3px 10px
+    min-height: 260px
+    top: 50px
+    right: 195px
     position: absolute
-    top: 80px
-    right: 270px
     background-color: var.$White
+    @media (min-width: 1150px)
+        top: 80px
+        right: 270px
+        
 
     &__title 
         font-weight: 700
@@ -18,7 +22,13 @@
         border-bottom: 2px solid var.$Light-grayish-blue
     
     &__checkout-container 
+        display: flex
+        flex-flow: column
         padding: 1.5rem
+        overflow-y: auto 
+        max-height: 230px
+        &::-webkit-scrollbar
+            width: 8px
     
     &__details-container 
         display: flex
@@ -26,7 +36,9 @@
         justify-content: space-between
         margin-bottom: 1.5rem
         color: var.$Dark-grayish-blue
-    
+        &:last-child
+            margin-bottom: 0
+
     &__image 
         width: 17%
         border-radius: 0.25rem
@@ -40,3 +52,6 @@
     
     &__checkout 
         @include mixins.button
+        width: 336px
+        margin: auto
+        margin-bottom: 0.5rem
