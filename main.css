@@ -161,7 +161,7 @@ body {
   position: relative;
   height: 300px;
   width: 100%;
-  background-image: url("./images/image-product-1.jpg");
+  background-image: url("https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/image-product-1.jpg");
   background-size: cover;
 }
 .gallery__image-container:hover {
@@ -258,7 +258,9 @@ body {
 }
 .gallery__thumbnail:hover {
   cursor: pointer;
-  border: 2px solid hsl(26, 100%, 55%);
+  border: 3px solid hsl(26, 100%, 55%);
+  filter: brightness(1.2);
+  transition: filter 0.33s;
 }
 @media (min-width: 1115px) {
   .gallery__image-container {
@@ -466,6 +468,7 @@ body {
   width: 336px;
   margin: auto;
   margin-bottom: 0.5rem;
+  display: none;
 }
 .cart-modal__checkout:hover {
   cursor: pointer;
@@ -501,7 +504,7 @@ body {
 }
 .modal-gallery__image-container {
   position: relative;
-  background-image: url("./images/image-product-1.jpg");
+  background-image: url("https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/image-product-1.jpg");
   height: 446px;
   background-size: cover;
   border-radius: 1rem;
@@ -519,7 +522,9 @@ body {
 }
 .modal-gallery__thumbnail:hover {
   cursor: pointer;
-  border: 2px solid hsl(26, 100%, 55%);
+  border: 3px solid hsl(26, 100%, 55%);
+  filter: brightness(1.2);
+  transition: filter 0.33s;
 }
 .modal-gallery__previous {
   background-color: hsl(0, 0%, 100%);
@@ -594,6 +599,15 @@ body {
 
 .show {
   display: block;
+}
+
+.active {
+  border: 3px solid hsl(26, 100%, 55%);
+  filter: brightness(1.2);
+  transition: all 0.33s ease;
+}
+.active:hover {
+  border: 3px solid hsl(26, 100%, 55%);
 }
 
 .cart-empty {

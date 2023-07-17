@@ -31,8 +31,12 @@ addToCartBtn.onclick = () => {
     cartNotification.style.display = 'block'
     userInput.value = userInputNumber = 0
 
-    if (lastValue != 0) return 
-    productContainer.innerHTML = `
+    document.querySelector('.cart-empty').style.display = 'none'
+    document.querySelector('.cart-modal__checkout').style.display = 'flex'
+
+
+    productContainer.innerHTML += `
+
     <div class="cart-modal__details-container">
         <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
         <div>
@@ -40,8 +44,7 @@ addToCartBtn.onclick = () => {
             <p class="cart-modal__price">$125.00 x3 <span>$375.00</span></p>
         </div>
         <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
-    </div>
-    <button class="cart-modal__checkout">Checkout</button>`
+    </div>`
 
     priceModal.innerHTML = `$125.00 x${lastValue} <span>$${lastValue*125}.00</span>`
 }
@@ -77,13 +80,10 @@ cartIconBtn.onclick = function() {
 // [ CART MODAL ] ENDING
 
 // [ DELETE PRODUCT FROM CART ] BEGINNING
-const deleteProductBtn = document.querySelector('.cart-modal__delete')
+// const deleteProductBtn = document.querySelector('.cart-modal__delete')
 const productContainer = document.querySelector('.cart-modal__checkout-container')
 
-deleteProductBtn.onclick = () => {
-    productContainer.innerHTML = '<p class="cart-empty">\
-        Your cart is empty</p>'
-
-    cartNotification.innerText = lastValue = 0
-}
+// deleteProductBtn.onclick = () => {
+//     cartNotification.innerText = lastValue = 0
+// }
 // [ DELETE PRODUCT FROM CART ] ENDING

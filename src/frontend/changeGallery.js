@@ -5,20 +5,28 @@ const prevGalleryBtn = document.querySelector('.gallery__previous')
 const nextGalleryBtn = document.querySelector('.gallery__next')
 const prevGalleryModalBtn = document.querySelector('.modal-gallery__previous')
 const nextGalleryModalBtn = document.querySelector('.modal-gallery__next')
+const imgCDN_dynamicURL = i => `https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/image-product-${i}.jpg`
 
 // [ CHANGE IMG WITH ARROWS ] beginning
 const arrowBtns = [ prevGalleryBtn, nextGalleryBtn, prevGalleryModalBtn, nextGalleryModalBtn ]
 
-let imgIndex = 1
+let galleryThumbIndex = 1, modalThumbIndex = 1
 
 arrowBtns.forEach(btn => btn.onclick = function(e) {
+    let index = this.className.includes('modal')
+    ? modalThumbIndex : galleryThumbIndex
+
     e.target.alt == 'next'
-    ? imgIndex == 4 ? imgIndex = 1 : imgIndex++
-    : imgIndex == 1 ? imgIndex = 4 : imgIndex--
+    ? index == 4 ? index = 1 : index++
+    : index == 1 ? index = 4 : index--
 
     this.attributes.class.value.includes('modal')
-    ? modalImgContainer.style.backgroundImage = `url('./images/image-product-${imgIndex}.jpg')`
-    : imgContainer.style.backgroundImage = `url('./images/image-product-${imgIndex}.jpg')`
+    ? modalImgContainer.style.backgroundImage = `url(${imgCDN_dynamicURL(index)})`
+    : imgContainer.style.backgroundImage = `url(${imgCDN_dynamicURL(index)})`
+
+    this.className.includes('modal')
+    ? modalThumbIndex = index
+    : galleryThumbIndex = index
 })
 // [ CHANGE IMG WITH ARROWS ] ending
 
@@ -27,7 +35,11 @@ const galleryModal = document.querySelector('.modal-gallery__background')
 
 // Toggle modal
 imgContainer.onclick = e => {
-    if (e.target.tagName != 'IMG') galleryModal.style.display = 'grid'
+    if (e.target.tagName == 'IMG') return
+    
+    galleryModal.style.display = 'grid'
+    modalImgContainer.style.backgroundImage = e.target.style.backgroundImage
+    modalThumbIndex = galleryThumbIndex
 
     galleryModal.onclick = e => {
         if (e.target.style.cssText != "display: grid;") return
@@ -50,11 +62,41 @@ const allThumbnails = [thumbnails, modalThumbnails]
 
 allThumbnails.forEach(thumbnails => thumbnails.forEach(thumbnail => 
     thumbnail.onclick = function(e) {
-        const img = e.target.src.replace('-thumbnail', '')
-
+        const img = e.target.src
+        .replace(
+            'c_thumb,w_200,g_face', 
+            'w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai'
+        )
+        
         this.id.includes('m') 
         ? modalImgContainer.style.backgroundImage = `url('${img}')`
         : imgContainer.style.backgroundImage = `url('${img}')`
     }
 ))
+
+const Observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.attributeName != 'style') return
+        
+        const imgNumber = getComputedStyle(mutation.target)
+        .getPropertyValue('background-image').at(-7)
+
+        mutation.target.classList[0].includes('modal')
+        ? updateActiveThumbnail(modalThumbnails) 
+        : updateActiveThumbnail(thumbnails)
+
+        function updateActiveThumbnail(container) {
+            [...container].find(thumbnail => 
+                thumbnail.classList.contains('active'))
+                .classList.toggle('active');
+
+            [...container].find(thumbnail => 
+                thumbnail.id.includes(imgNumber))
+                .classList.toggle('active')
+        }
+    })
+})
+
+Observer.observe(imgContainer, { attributes: true })
+Observer.observe(modalImgContainer, { attributes: true })
 // [ THUMBNAILS ] ending

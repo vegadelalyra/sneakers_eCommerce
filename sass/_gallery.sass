@@ -6,7 +6,7 @@
         position: relative
         height: 300px
         width: 100%
-        background-image: url('./images/image-product-1.jpg')
+        background-image: var.$DefaultImgUrl
         background-size: cover
         &:hover
             cursor: pointer
@@ -37,9 +37,10 @@
         
         &:hover 
             cursor: pointer
-            border: 2px solid var.$Orange
-        
-    
+            border: 3px solid var.$Orange
+            filter: brightness(1.2) 
+            transition: filter 0.33s
+            
     @media (min-width: 1115px) 
         &__image-container 
             width: 446px
