@@ -9,13 +9,7 @@
   
   <title>Frontend Mentor | E-commerce product page</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 18fpx; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-
-  <script defer src="./main.js"></script>
+  <script defer type="module" src="./main.js"></script>
 </head>
 <body>
 
@@ -36,25 +30,10 @@
         </nav>
       </div>
 
-      
-      <!-- modal navbar [beginning] -->
-      <div class="modal-navbar__background">
-        <nav class="modal-navbar">
-          <img class="modal-navbar__close-icon" src="./images/icon-close.svg" alt="">
-          <ul class="modal-navbar__items">
-            <li><a href="#" class="modal-navbar__link">Collections</a></li>
-            <li><a href="#" class="modal-navbar__link">Men</a></li>
-            <li><a href="#" class="modal-navbar__link">Women</a></li>
-            <li><a href="#" class="modal-navbar__link">About</a></li>
-            <li><a href="#" class="modal-navbar__link">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <!-- modal navbar [ending] -->
 
       <div class="header__cart-avatar">
         <div class="header__cart">
-          <div class="header__cart--notification">3</div>
+          <div class="header__cart--notification">0</div>
           <img src="./images/icon-cart.svg" alt="cart">
         </div>
         <img class="header__avatar" src="./images/image-avatar.png" alt="avatar">
@@ -112,32 +91,46 @@
     </div>
     <!-- cart modal [ending] -->
 
-    <!-- gallery modal [beginning] -->
-    <div class="modal-gallery__background">
-      <article class="modal-gallery">
-        <div class="modal-gallery__close-container">
-          <img class="modal-gallery__close" src="./images/icon-close.svg" alt=""> 
-        </div>
-        <div class="modal-gallery__image-container">
-          <img class="modal-gallery__previous" src="./images/icon-previous.svg" alt="previous">
-          <img class="modal-gallery__next" src="./images/icon-next.svg" alt="next">
-        </div>
-        <div class="modal-gallery__thumbnails">
-          <img id="m1" class="modal-gallery__thumbnail" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
-          <img id="m2" class="modal-gallery__thumbnail" src="./images/image-product-2-thumbnail.jpg" alt="thumbnail">
-          <img id="m3" class="modal-gallery__thumbnail" src="./images/image-product-3-thumbnail.jpg" alt="thumbnail">
-          <img id="m4" class="modal-gallery__thumbnail" src="./images/image-product-4-thumbnail.jpg" alt="thumbnail">
-        </div>
-      </article>
-    </div>
-    <!-- gallery modal [ending] -->
-
   </main>
 
+  <!-- modal navbar [beginning] -->
+  <div class="modal-navbar__background">
+    <nav class="modal-navbar">
+      <img class="modal-navbar__close-icon" src="./images/icon-close.svg" alt="">
+      <ul class="modal-navbar__items">
+        <li><a href="#" class="modal-navbar__link">Collections</a></li>
+        <li><a href="#" class="modal-navbar__link">Men</a></li>
+        <li><a href="#" class="modal-navbar__link">Women</a></li>
+        <li><a href="#" class="modal-navbar__link">About</a></li>
+        <li><a href="#" class="modal-navbar__link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- modal navbar [ending] -->
+
+  <!-- gallery modal [beginning] -->
+  <div class="modal-gallery__background">
+    <article class="modal-gallery">
+      <div class="modal-gallery__close-container">
+        <img class="modal-gallery__close" src="./images/icon-close.svg" alt=""> 
+      </div>
+      <div class="modal-gallery__image-container">
+        <img class="modal-gallery__previous" src="./images/icon-previous.svg" alt="previous">
+        <img class="modal-gallery__next" src="./images/icon-next.svg" alt="next">
+      </div>
+      <div class="modal-gallery__thumbnails">
+        <img id="m1" class="modal-gallery__thumbnail" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
+        <img id="m2" class="modal-gallery__thumbnail" src="./images/image-product-2-thumbnail.jpg" alt="thumbnail">
+        <img id="m3" class="modal-gallery__thumbnail" src="./images/image-product-3-thumbnail.jpg" alt="thumbnail">
+        <img id="m4" class="modal-gallery__thumbnail" src="./images/image-product-4-thumbnail.jpg" alt="thumbnail">
+      </div>
+    </article>
+  </div>
+  <!-- gallery modal [ending] -->
 
   <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/vegadelalyra" target="_blank">Daniel Vega</a>.
+    <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. </p>
+     <p>Coded by <a href="https://github.com/vegadelalyra" target="_blank">Daniel Vega</a>.</p>
   </footer>
 </body>
 </html>

@@ -1,0 +1,52 @@
+@use 'initial'
+@use 'var'
+@use 'header'
+@use 'navbar'
+@use 'modal-navbar'
+@use 'gallery'
+@use 'details'
+@use 'input'
+@use 'modal-cart'
+@use 'modal-gallery'
+
+.main-container 
+    width: 375px
+    margin: auto
+
+    @media (min-width: 1115px) 
+        width: 77.3vw
+        height: 95vh
+        position: relative
+    
+
+
+.content 
+    @media (min-width: 1115px) 
+        display: flex
+        padding: 3vh 50px
+        // padding: 45px 50px
+        gap: 124px
+    
+
+body
+    position: relative
+    
+.show
+    display: block
+
+.cart-empty 
+    color: var.$Black-modal
+    font-weight: 700
+    text-align: center
+    margin-top: 30px
+
+
+.attribution  
+    font-size: 18fpx 
+    text-align: center 
+    & a  
+        color: hsl(228, 45%, 44%) 
+    @media (min-width: 1150px) 
+        display: flex
+        justify-content: center
+        gap: 10px

@@ -1,0 +1,35 @@
+@use 'var'
+@use 'mixins'
+
+.modal-navbar 
+    &__background 
+        @include mixins.modal-background
+
+    background-color: var.$White
+    width: 250px
+    height: 100%
+    position: absolute
+    padding: 18px 80px
+    left: 10px
+
+    &__items 
+        display: flex
+        flex-flow: column
+        justify-content: space-between
+        height: 28vh
+        list-style: none
+        margin-top: 25%
+    
+    &__link 
+        text-decoration: none
+        color: var.$Very-dark-blue
+        font-size: 1.1em
+        font-weight: 700
+    
+    &__close-icon:hover 
+        cursor: pointer
+    
+    
+    @media (min-width: 1150px) 
+        display: none
+    

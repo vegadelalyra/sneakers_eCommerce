@@ -1,1 +1,2 @@
-console.log('UPDATED. 1')
+import './src/frontend.js'
+import './src/backend.js'

@@ -1,0 +1,50 @@
+@use 'var'
+@use 'mixins'
+
+.modal-gallery 
+    width: 550px
+    &__background 
+        @include mixins.modal-background
+        display: none
+        place-content: center
+    
+    &__close-container 
+        text-align: right
+        height: 30px
+    
+    &__close 
+        width: 1rem
+        &:hover 
+            cursor: pointer
+            content: url('../images/icon-close-white.svg')
+        
+    
+    &__image-container 
+        position: relative
+        background-image: url('./images/image-product-1.jpg')
+        height: 446px
+        background-size: cover
+        border-radius: 1rem
+        margin-bottom: 2rem
+    
+    &__thumbnails 
+        display: flex
+        justify-content: space-between
+        width: 450px
+        margin: auto
+    
+    &__thumbnail 
+        width: 90px
+        border-radius: 1rem
+        &:hover 
+            cursor: pointer
+            border: 2px solid var.$Orange
+        
+    
+    &__previous 
+        @include mixins.image-btn(-20px)
+    
+    &__next 
+        @include mixins.image-btn(525px)
+    
+

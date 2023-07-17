@@ -1,0 +1,78 @@
+@use 'var'
+
+.header 
+    display: flex 
+    align-items: center
+    justify-content: space-between
+    height: 7.56vh
+    padding: 0 6.4% 0 0
+
+    @media (min-width: 1115px) 
+        height: 12.5vh
+        border-bottom: 1px solid var.$Grayish-blue
+    
+    &__navigation 
+        width: 55%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: space-around
+        margin-left: 15px
+
+        @media (min-width: 1115px) 
+            width: 55%
+            gap: 20px
+            margin-left: -10px
+        
+    
+    &__menu 
+        &:hover 
+            cursor: pointer
+        
+        @media (min-width: 1115px) 
+            display: none
+        
+    
+    &__cart-avatar 
+        display: flex
+        align-items: center
+        justify-content: space-between
+        width: 70px
+
+        @media (min-width: 1115px) 
+            width: 125px    
+        
+    
+    &__cart 
+        position: relative
+        &--notification 
+            display: none
+            background-color: var.$Orange
+            width: 15px
+            height: 12px
+            border-radius: 16px
+            position: absolute
+            top: -2px
+            right: -5px
+            font-size: 0.6em
+            font-weight: bold
+            text-align: center
+            color: var.$White
+        
+        &:hover 
+            cursor: pointer
+        
+    
+    &__avatar 
+        width: 24px
+
+        @media (min-width: 1115px) 
+            width: 48px    
+        
+        &:hover
+            cursor: pointer
+            border: 2px solid var.$Orange
+            border-radius: 50%
+        
+    
+
