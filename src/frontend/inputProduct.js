@@ -29,15 +29,30 @@ minusBtn.onclick = () => {
 // [ INPUT ] ENDING
 
 // [ LOAD CART FROM LOCAL STORAGE ] BEGINNING
+const productContainer = document.querySelector('.cart-modal__checkout-container')
+const cartNotification = document.querySelector('.header__cart--notification')
+const addToCartBtn = document.querySelector('.details__button')
+
 const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 
-// if (Object.length(Cart)) 
+if (Object.values(Cart)) {
+    
+    Object.values(Cart)
+    .forEach(Product => addToCart(Product))
+
+    const inCartProductsAmount = Object.values(Cart)
+    .map(Product => Product.quant).reduce((a, b) => a + b)
+
+    cartNotification.innerText = inCartProductsAmount
+    cartNotification.style.display = 'block'
+    
+    document.querySelector('.cart-empty').style.display = 'none'
+    document.querySelector('.cart-modal__checkout').style.display = 'flex'
+}
 
 // [ LOAD CART FROM LOCAL STORAGE ] ENDING
 
 // [ ADD TO CART ] BEGINNING
-const addToCartBtn = document.querySelector('.details__button')
-const cartNotification = document.querySelector('.header__cart--notification')
 
 let lastValue = parseInt(cartNotification.innerText)
 
@@ -55,36 +70,36 @@ addToCartBtn.onclick = () => {
     Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0]
     Product['quant'] = lastValue
 
-    Cart[Product.title] ? modifyCart() : addToCart() 
+    Cart[Product.title] ? modifyCart() : addToCart(Product) 
     
     Cart[Product['title']] = Product 
     localStorage.setItem('sneakers cart', JSON.stringify(Cart))
     console.log( '[', Product.title, '\n', Product.price, 
     'x', Product.quant, ']', 'added to Cart')
 
-    function addToCart(){
-        productContainer.innerHTML += `
-
-            <div class="cart-modal__details-container">
-                <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
-                <div>
-                    <p class="cart-modal__product">${Product.title}</p>
-                    <p class="cart-modal__price" id="${Product.title.replaceAll(' ', '')}">
-                        ${Product.price} x${Product.quant} 
-                        <span>
-                            $${Number(Product.price.slice(1)) * Product.quant}.00
-                        </span>
-                    </p>
-                </div>
-                <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
-            </div>`
-    }
-
     function modifyCart(){
         document.querySelector(`#${Product.title.replaceAll(' ', '')}`)
         .innerHTML = `${Product.price} x${Product.quant} 
         <span>$${Number(Product.price.slice(1)) * Product.quant}.00</span>`
     }
+}
+
+function addToCart(Product){
+    productContainer.innerHTML += `
+
+        <div class="cart-modal__details-container">
+            <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
+            <div>
+                <p class="cart-modal__product">${Product.title}</p>
+                <p class="cart-modal__price" id="${Product.title.replaceAll(' ', '')}">
+                    ${Product.price} x${Product.quant} 
+                    <span>
+                        $${Number(Product.price.slice(1)) * Product.quant}.00
+                    </span>
+                </p>
+            </div>
+            <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
+        </div>`
 }
 // [ ADD TO CART ] ENDING
 
@@ -119,7 +134,6 @@ cartIconBtn.onclick = function() {
 
 // [ DELETE PRODUCT FROM CART ] BEGINNING
 // const deleteProductBtn = document.querySelector('.cart-modal__delete')
-const productContainer = document.querySelector('.cart-modal__checkout-container')
 
 // deleteProductBtn.onclick = () => {
 //     cartNotification.innerText = lastValue = 0
