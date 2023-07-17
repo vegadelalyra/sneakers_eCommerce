@@ -35,7 +35,8 @@ const galleryModal = document.querySelector('.modal-gallery__background')
 
 // Toggle modal
 imgContainer.onclick = e => {
-    if (e.target.tagName == 'IMG') return
+    if (window.matchMedia('(max-width:1115px)').matches 
+    ||e.target.tagName == 'IMG') return
     
     galleryModal.style.display = 'grid'
     modalImgContainer.style.backgroundImage = e.target.style.backgroundImage

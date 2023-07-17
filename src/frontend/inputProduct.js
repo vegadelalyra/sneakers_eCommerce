@@ -5,6 +5,16 @@ let minusBtn = document.querySelector('.input__minus')
 let userInput = document.querySelector('.input__number')
 let plusBtn = document.querySelector('.input__plus')
 
+userInput.onkeydown = e => {
+    const Backspace = e.key == 'Backspace'
+    const Numbers = e.key.match(/^[0-9]+$/)
+    const Arrows = e.key.includes('Arrow')
+
+    if (Numbers || Backspace || Arrows) return 
+    
+    e.preventDefault()
+}
+
 let userInputNumber = 0
 
 plusBtn.onclick = () => {
@@ -18,6 +28,13 @@ minusBtn.onclick = () => {
 }
 // [ INPUT ] ENDING
 
+// [ LOAD CART FROM LOCAL STORAGE ] BEGINNING
+const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
+
+// if (Object.length(Cart)) 
+
+// [ LOAD CART FROM LOCAL STORAGE ] ENDING
+
 // [ ADD TO CART ] BEGINNING
 const addToCartBtn = document.querySelector('.details__button')
 const cartNotification = document.querySelector('.header__cart--notification')
@@ -26,7 +43,6 @@ let lastValue = parseInt(cartNotification.innerText)
 
 addToCartBtn.onclick = () => {
     lastValue = lastValue + userInputNumber
-
     cartNotification.innerText = lastValue
     cartNotification.style.display = 'block'
     userInput.value = userInputNumber = 0
@@ -34,19 +50,41 @@ addToCartBtn.onclick = () => {
     document.querySelector('.cart-empty').style.display = 'none'
     document.querySelector('.cart-modal__checkout').style.display = 'flex'
 
+    const Product = {}
+    Product['title'] = document.querySelector('.details__title').innerHTML
+    Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0]
+    Product['quant'] = lastValue
 
-    productContainer.innerHTML += `
+    Cart[Product.title] ? modifyCart() : addToCart() 
+    
+    Cart[Product['title']] = Product 
+    localStorage.setItem('sneakers cart', JSON.stringify(Cart))
+    console.log( '[', Product.title, '\n', Product.price, 
+    'x', Product.quant, ']', 'added to Cart')
 
-    <div class="cart-modal__details-container">
-        <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
-        <div>
-            <p class="cart-modal__product">Fall Limited Edition Sneakers</p>
-            <p class="cart-modal__price">$125.00 x3 <span>$375.00</span></p>
-        </div>
-        <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
-    </div>`
+    function addToCart(){
+        productContainer.innerHTML += `
 
-    priceModal.innerHTML = `$125.00 x${lastValue} <span>$${lastValue*125}.00</span>`
+            <div class="cart-modal__details-container">
+                <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
+                <div>
+                    <p class="cart-modal__product">${Product.title}</p>
+                    <p class="cart-modal__price" id="${Product.title.replaceAll(' ', '')}">
+                        ${Product.price} x${Product.quant} 
+                        <span>
+                            $${Number(Product.price.slice(1)) * Product.quant}.00
+                        </span>
+                    </p>
+                </div>
+                <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
+            </div>`
+    }
+
+    function modifyCart(){
+        document.querySelector(`#${Product.title.replaceAll(' ', '')}`)
+        .innerHTML = `${Product.price} x${Product.quant} 
+        <span>$${Number(Product.price.slice(1)) * Product.quant}.00</span>`
+    }
 }
 // [ ADD TO CART ] ENDING
 
