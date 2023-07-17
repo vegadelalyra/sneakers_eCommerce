@@ -16,7 +16,7 @@
     @media (min-width: 1115px) 
         width: 77.3vw
         height: 95vh
-        position: relative
+        // position: relative
     
 
 
@@ -30,6 +30,12 @@
 
 body
     position: relative
+    height: 110vh
+    @media (min-width: 1150px) 
+        overflow: hidden
+    @media (max-height: 720px)
+        overflow: auto
+
     
 .show
     display: block
@@ -42,11 +48,16 @@ body
 
 
 .attribution  
-    font-size: 18fpx 
+    font-size: 1rem
     text-align: center 
+
     & a  
         color: hsl(228, 45%, 44%) 
+
     @media (min-width: 1150px) 
         display: flex
         justify-content: center
-        gap: 10px
+        gap: 15px
+
+    @media (max-height: 720px)
+        display: none

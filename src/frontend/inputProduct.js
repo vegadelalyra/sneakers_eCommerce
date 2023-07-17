@@ -52,6 +52,16 @@ const cartIconBtn = document.querySelector('.header__cart')
 const cartModal = document.querySelector('.cart-modal')
 const priceModal = document.querySelector('.cart-modal__price')
 
+cartIconBtn.onmouseover = () => {
+    if (cartModal.classList.contains('show')) return 
+    cartModal.style.display = 'block'
+}
+
+cartIconBtn.onmouseout = () => {
+    if (cartModal.classList.contains('show')) return 
+    cartModal.style.display = 'none'
+}
+
 cartIconBtn.onclick = () => {
     cartModal.classList.toggle('show')
 
@@ -69,6 +79,5 @@ deleteProductBtn.onclick = () => {
         Your cart is empty</p>'
 
     cartNotification.innerText = lastValue = 0
-    console.log('a');
 }
 // [ DELETE CART ] ENDING
