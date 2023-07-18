@@ -1,3 +1,4 @@
+import sweetAlert from "./sweetAlert.js"
 // Defining articles amount bought by the client 
 
 // [ INPUT ] BEGINNING
@@ -67,7 +68,7 @@ const cartNotification = document.querySelector('.header__cart--notification')
 
 const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 
-if (Object.values(Cart)) {
+if (Object.values(Cart).length) {
     
     Object.values(Cart)
     .forEach(Product => addToCart(Product))
@@ -108,6 +109,7 @@ addToCartBtn.onclick = () => {
     localStorage.setItem('sneakers cart', JSON.stringify(Cart))
     console.log( '[', Product.title, '\n', Product.price, 
     'x', Product.quant, ']', 'added to Cart')
+    toggleAddToCartBtn()
 
     function modifyCart(){
         document.querySelector(`#${Product.title.replaceAll(' ', '')}`)
@@ -117,22 +119,50 @@ addToCartBtn.onclick = () => {
 }
 
 function addToCart(Product){
-    productContainer.innerHTML += `
+    const ProductID = Product.title.replaceAll(' ', '')
 
-        <div class="cart-modal__details-container">
+    const template = `
+
+        <div class="cart-modal__details-container" pid="${ProductID}">
             <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
             <div>
                 <p class="cart-modal__product">${Product.title}</p>
-                <p class="cart-modal__price" id="${Product.title.replaceAll(' ', '')}">
+                <p class="cart-modal__price" id="${ProductID}">
                     ${Product.price} x${Product.quant} 
                     <span>
                         $${Number(Product.price.slice(1)) * Product.quant}.00
                     </span>
                 </p>
             </div>
-            <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
+            <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete" name=${ProductID}>
         </div>`
-}
+
+    productContainer.innerHTML += template
+    
+    // [ DELETE PRODUCT FROM CART ] BEGINNING
+    productContainer.querySelector(`[name=${ProductID}]`).onclick = () => {
+        sweetAlert()
+        return
+        const removedProduct = productContainer
+        .querySelector(`[pid="${ProductID}"]`)
+        productContainer.removeChild(removedProduct)
+
+        delete Cart[Product.title]
+        localStorage.setItem('sneakers cart', JSON.stringify(Cart))
+
+        cartNotification.innerHTML = lastValue 
+        = lastValue - Product.quant
+        
+        if (productContainer.children.length != 1) return 
+
+        lastValue = 0
+        cartNotification.style.display = 'none'
+        document.querySelector('.cart-empty').style.display = 'block'
+        document.querySelector('.cart-modal__checkout').style.display = 'none'
+    }
+    // [ DELETE PRODUCT FROM CART ] ENDING
+
+}       
 // [ ADD TO CART ] ENDING
 
 // [ CART MODAL ] BEGINNING 
@@ -163,11 +193,3 @@ cartIconBtn.onclick = function() {
     // Your cart is empty</p>'
 }
 // [ CART MODAL ] ENDING
-
-// [ DELETE PRODUCT FROM CART ] BEGINNING
-const deleteProductBtn = document.querySelector('.cart-modal__delete')
-
-deleteProductBtn.onclick = () => {
-    cartNotification.innerText = lastValue = 0
-}
-// [ DELETE PRODUCT FROM CART ] ENDING
