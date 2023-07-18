@@ -22,7 +22,6 @@
     @media (min-width: 1115px) 
         display: flex
         padding: 3vh 50px
-        // padding: 45px 50px
         gap: 124px
     
 
@@ -45,6 +44,11 @@ body
     &:hover
         border: 3px solid var.$Orange
         
+.disabled
+    background-color: var.$Dark-grayish-blue
+    &:hover 
+        cursor: not-allowed
+        opacity: 1
 
 .cart-empty 
     color: var.$Black-modal
@@ -54,7 +58,7 @@ body
 
 
 .attribution  
-    font-size: 1rem
+    font-size: 0.8rem
     text-align: center 
 
     & a  

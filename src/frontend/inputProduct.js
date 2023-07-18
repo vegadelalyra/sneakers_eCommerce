@@ -4,34 +4,66 @@
 let minusBtn = document.querySelector('.input__minus')
 let userInput = document.querySelector('.input__number')
 let plusBtn = document.querySelector('.input__plus')
+const addToCartBtn = document.querySelector('.details__button')
 
-userInput.onkeydown = e => {
+let userInputNumber = 0
+
+userInput.onkeydown = function(e) {
     const Backspace = e.key == 'Backspace'
     const Numbers = e.key.match(/^[0-9]+$/)
     const Arrows = e.key.includes('Arrow')
+    const TextSelected = this.selectionStart == 0 
+    && this.selectionEnd == this.value.length
+
+    if (this.value == '0' && Numbers) this.value = ''
+
+    if ((this.value.length == 1 && Backspace) || TextSelected) {
+        e.preventDefault()
+        this.value = '0'
+    } 
 
     if (Numbers || Backspace || Arrows) return 
     
     e.preventDefault()
 }
 
-let userInputNumber = 0
+userInput.onkeyup = function() {
+    userInputNumber = this.value
+    toggleAddToCartBtn()
+}
 
 plusBtn.onclick = () => {
     userInput.value = ++userInputNumber
+    toggleAddToCartBtn()
 }
 
 minusBtn.onclick = () => {   
     if (--userInputNumber < 0) userInputNumber = 0    
 
     userInput.value = userInputNumber
+    toggleAddToCartBtn()
+}
+
+function toggleAddToCartBtn() {
+    const input = userInput.value
+    const btnDisabled = addToCartBtn
+    .classList.contains('disabled')
+
+    if (input == false && !btnDisabled) {
+        addToCartBtn.classList.add('disabled')
+        addToCartBtn.disabled = true
+    }
+      
+    if (!Number(input) == false) {
+    addToCartBtn.classList.remove('disabled')
+    addToCartBtn.disabled = false
+    }
 }
 // [ INPUT ] ENDING
 
 // [ LOAD CART FROM LOCAL STORAGE ] BEGINNING
 const productContainer = document.querySelector('.cart-modal__checkout-container')
 const cartNotification = document.querySelector('.header__cart--notification')
-const addToCartBtn = document.querySelector('.details__button')
 
 const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 
@@ -133,9 +165,9 @@ cartIconBtn.onclick = function() {
 // [ CART MODAL ] ENDING
 
 // [ DELETE PRODUCT FROM CART ] BEGINNING
-// const deleteProductBtn = document.querySelector('.cart-modal__delete')
+const deleteProductBtn = document.querySelector('.cart-modal__delete')
 
-// deleteProductBtn.onclick = () => {
-//     cartNotification.innerText = lastValue = 0
-// }
+deleteProductBtn.onclick = () => {
+    cartNotification.innerText = lastValue = 0
+}
 // [ DELETE PRODUCT FROM CART ] ENDING

@@ -69,33 +69,41 @@ allThumbnails.forEach(thumbnails => thumbnails.forEach(thumbnail =>
             'w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai'
         )
         
+
         this.id.includes('m') 
-        ? modalImgContainer.style.backgroundImage = `url('${img}')`
-        : imgContainer.style.backgroundImage = `url('${img}')`
+        ? (
+            modalImgContainer.style.backgroundImage = `url('${img}')`, 
+            modalThumbIndex = this.id.at(-1)
+        ):(
+            imgContainer.style.backgroundImage = `url('${img}')`, 
+            galleryThumbIndex = this.id
+        )
+        
     }
 ))
 
 const Observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
         if (mutation.attributeName != 'style') return
-        
-        const imgNumber = getComputedStyle(mutation.target)
-        .getPropertyValue('background-image').at(-7)
 
         mutation.target.classList[0].includes('modal')
         ? updateActiveThumbnail(modalThumbnails) 
         : updateActiveThumbnail(thumbnails)
 
         function updateActiveThumbnail(container) {
+            const imgNumber = getComputedStyle(mutation.target)
+            .getPropertyValue('background-image').at(-7);
+            
             [...container].find(thumbnail => 
                 thumbnail.classList.contains('active'))
                 .classList.toggle('active');
-
+        
             [...container].find(thumbnail => 
                 thumbnail.id.includes(imgNumber))
                 .classList.toggle('active')
         }
     })
+
 })
 
 Observer.observe(imgContainer, { attributes: true })

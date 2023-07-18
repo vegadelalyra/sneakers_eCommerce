@@ -610,6 +610,14 @@ body {
   border: 3px solid hsl(26, 100%, 55%);
 }
 
+.disabled {
+  background-color: hsl(219, 9%, 45%);
+}
+.disabled:hover {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
 .cart-empty {
   color: hsla(0, 0%, 0%, 0.5);
   font-weight: 700;
@@ -618,7 +626,7 @@ body {
 }
 
 .attribution {
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 .attribution a {
