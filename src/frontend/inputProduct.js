@@ -141,8 +141,6 @@ function addToCart(Product){
     
     // [ DELETE PRODUCT FROM CART ] BEGINNING
     productContainer.querySelector(`[name=${ProductID}]`).onclick = () => {
-        sweetAlert()
-        return
         const removedProduct = productContainer
         .querySelector(`[pid="${ProductID}"]`)
         productContainer.removeChild(removedProduct)
