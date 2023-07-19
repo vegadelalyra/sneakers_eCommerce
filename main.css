@@ -258,6 +258,7 @@ body {
 }
 .gallery__thumbnail {
   width: 90px;
+  height: 90px;
   border-radius: 1rem;
 }
 .gallery__thumbnail:hover {
@@ -524,6 +525,7 @@ body {
   margin: auto;
 }
 .modal-gallery__thumbnail {
+  height: 90px;
   width: 90px;
   border-radius: 1rem;
 }

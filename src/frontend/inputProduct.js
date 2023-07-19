@@ -100,7 +100,7 @@ addToCartBtn.onclick = () => {
 
     const Product = {}
     Product['title'] = document.querySelector('.details__title').innerHTML
-    Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0]
+    Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0].trim()
     Product['quant'] = lastValue
 
     Cart[Product.title] ? modifyCart() : addToCart(Product) 
@@ -157,6 +157,8 @@ function addToCart(Product){
         cartNotification.style.display = 'none'
         document.querySelector('.cart-empty').style.display = 'block'
         document.querySelector('.cart-modal__checkout').style.display = 'none'
+
+        console.log(`[ ${Product.title} ] \nremoved from Cart`)
     }
     // [ DELETE PRODUCT FROM CART ] ENDING
 
@@ -166,7 +168,7 @@ function addToCart(Product){
 // [ CART MODAL ] BEGINNING 
 const cartIconBtn = document.querySelector('.header__cart')
 const cartModal = document.querySelector('.cart-modal')
-const priceModal = document.querySelector('.cart-modal__price')
+// const priceModal = document.querySelector('.cart-modal__price')
 
 cartIconBtn.onmouseover = function() {
     if (cartModal.classList.contains('show')) return 
