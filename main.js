@@ -1,2 +1,2 @@
+// import './src/backend.js'
 import './src/frontend.js'
-import './src/backend.js'
