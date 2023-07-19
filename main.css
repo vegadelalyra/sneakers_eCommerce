@@ -26,6 +26,7 @@ body {
   width: 55%;
   height: 100%;
   display: flex;
+  padding: 1px;
   align-items: center;
   justify-content: space-around;
   margin-left: 15px;
@@ -64,7 +65,7 @@ body {
   background-color: hsl(26, 100%, 55%);
   width: 15px;
   height: 12px;
-  border-radius: 16px;
+  border-radius: 15px;
   position: absolute;
   top: -2px;
   right: -5px;
@@ -138,7 +139,7 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  height: 28vh;
+  height: 40vh;
   list-style: none;
   margin-top: 25%;
 }
@@ -147,6 +148,9 @@ body {
   color: hsl(220, 13%, 13%);
   font-size: 1.1em;
   font-weight: 700;
+}
+.modal-navbar__link:hover {
+  border-bottom: 4px solid hsl(26, 100%, 55%);
 }
 .modal-navbar__close-icon:hover {
   cursor: pointer;
@@ -374,7 +378,7 @@ body {
 .input__minus {
   width: 1.5rem;
   height: 100%;
-  padding: 1.6rem 0.1rem;
+  padding: 3.5vh 0.1vh;
 }
 .input__minus:hover {
   cursor: pointer;
@@ -392,7 +396,7 @@ body {
 .input__plus {
   width: 1.5rem;
   height: 100%;
-  padding: 1.2rem 0.2rem;
+  padding: 2.5vh 0.1vh;
 }
 .input__plus:hover {
   cursor: pointer;
