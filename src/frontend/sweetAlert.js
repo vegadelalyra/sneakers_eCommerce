@@ -11,19 +11,19 @@ export default function () {
         confirmButtonText: "Remove",
         showLoaderOnConfirm: true,
         preConfirm: (numberOfItems) => {
-          numberOfItems = parseInt(numberOfItems);
+          numberOfItems = parseInt(numberOfItems)
           if (isNaN(numberOfItems) || numberOfItems <= 0) {
-            return Swal.showValidationMessage("Please enter a valid number of items to remove.");
+            return Swal.showValidationMessage("Please enter a valid number of items to remove.")
           }
-          return numberOfItems;
+          return numberOfItems
         },
         allowOutsideClick: () => !Swal.isLoading()
       }).then((result) => {
         if (result.isConfirmed) {
-          const numberOfItems = result.value;
-          showSecondPromptDialog(numberOfItems);
+          const numberOfItems = result.value
+          showSecondPromptDialog(numberOfItems)
         }
-      });
+      })
     }
   
     // Define a function to show the second prompt dialog
@@ -42,21 +42,20 @@ export default function () {
             closeButton: 'edit-button'
           },
           didOpen: () => {
-            const cancelButton = Swal.getCancelButton();
+            const cancelButton = Swal.getCancelButton()
             cancelButton.addEventListener('click', () => {
-              Swal.close();
-              showFirstPromptDialog();
-            });
+              Swal.close()
+              showFirstPromptDialog()
+            })
           }
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire("Deleted!", `${numberOfItems} items have been removed from your cart.`, "success");
+            Swal.fire("Deleted!", `${numberOfItems} items have been removed from your cart.`, "success")
           }
-        });
+        })
       }
-      
   
     // Initial call to show the first prompt dialog
-    showFirstPromptDialog();
+    showFirstPromptDialog()
   }
   
