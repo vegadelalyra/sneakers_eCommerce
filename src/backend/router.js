@@ -1,10 +1,11 @@
-import { error, home, home, checkout } from './routes.js'
+import { error, home, product, collections, checkout } from './routes.js'
 
 const Routes = {
     404 : error, 
-    '/' : home,
-    '/:id' : product,
-    '/checkout' : checkout,
+    '/#' : home,
+    'collections' : collections,
+    'products/:id' : product,
+    'checkout' : checkout,
 }
 
 Router()
@@ -12,9 +13,13 @@ window.addEventListener('hashchange', Router)
 
 async function Router () {
   let location = window.location.hash.replace('#', '')
-  if (!location.length) location = '/'
+  if (location.length == 0) location = '/#'
 
   const route = Routes[location] || Routes[404]
+
+  route();
+
+  (async () => import('/src/frontend.js'))()
 }
 
 /**********************

@@ -1,5 +1,17 @@
 {
-    "shoes": [
+    "products": [
+        {
+            "id" : 1,
+            "name": "Fall Limited Edition Sneakers",
+            "about": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+            "price": 125,
+            "imgs" : [
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-1.jpg",
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-2.jpg",
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-3.jpg",
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-4.jpg"
+            ]
+        },
         {}
     ],
     "orders": []

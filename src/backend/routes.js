@@ -1,4 +1,5 @@
-export { checkout } from './routes/checkout.js'
 export { error } from './routes/error.js'
 export { home } from './routes/home.js'
-export { shoe } from './routes/shoe.js'
+export { collections } from './routes/collections.js'
+export { product } from './routes/product.js'
+export { checkout } from './routes/checkout.js'
