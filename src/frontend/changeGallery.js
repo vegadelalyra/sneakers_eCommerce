@@ -20,9 +20,15 @@ arrowBtns.forEach(btn => btn.onclick = function(e) {
     ? index == 4 ? index = 1 : index++
     : index == 1 ? index = 4 : index--
 
+    const curatedThumbnail = thumbnails[index - 1]
+    .src.replace(
+        'c_thumb,w_200,g_face', 
+        'w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai'
+    )
+
     this.attributes.class.value.includes('modal')
-    ? modalImgContainer.style.backgroundImage = `url(${imgCDN_dynamicURL(index)})`
-    : imgContainer.style.backgroundImage = `url(${imgCDN_dynamicURL(index)})`
+    ? modalImgContainer.style.backgroundImage = `url(${curatedThumbnail})`
+    : imgContainer.style.backgroundImage = `url(${curatedThumbnail})`
 
     this.className.includes('modal')
     ? modalThumbIndex = index

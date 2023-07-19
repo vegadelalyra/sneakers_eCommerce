@@ -101,6 +101,8 @@ addToCartBtn.onclick = () => {
     const Product = {}
     Product['title'] = document.querySelector('.details__title').innerHTML
     Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0].trim()
+    Product['image'] = document.querySelector('.gallery__image-container').style.backgroundImage
+    Product.image = Product.image.slice(4, Product.image.lastIndexOf(')'))
     Product['quant'] = lastValue
 
     Cart[Product.title] ? modifyCart() : addToCart(Product) 
@@ -124,7 +126,7 @@ function addToCart(Product){
     const template = `
 
         <div class="cart-modal__details-container" pid="${ProductID}">
-            <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
+            <img class="cart-modal__image" src=${Product.image} alt="thumbnail">
             <div>
                 <p class="cart-modal__product">${Product.title}</p>
                 <p class="cart-modal__price" id="${ProductID}">
