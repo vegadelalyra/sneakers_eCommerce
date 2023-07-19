@@ -16,12 +16,8 @@ async function Router () {
   if (location.length == 0) location = '/#'
 
   const route = Routes[location] || Routes[404]
-
   route();
-
-  (async () => import('/src/frontend.js'))()
 }
-
 /**********************
  * HISTORY PUSH STATE *
  **********************/

@@ -161,7 +161,7 @@ body {
   position: relative;
   height: 300px;
   width: 100%;
-  background-image: url("https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/image-product-1.jpg");
+  background-image: url("https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/1/image-product-1.jpg");
   background-size: cover;
 }
 .gallery__previous {
@@ -504,7 +504,7 @@ body {
 }
 .modal-gallery__image-container {
   position: relative;
-  background-image: url("https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/image-product-1.jpg");
+  background-image: url("https://res.cloudinary.com/vegadelalyra/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1689613379/sprint2/1/image-product-1.jpg");
   height: 446px;
   background-size: cover;
   border-radius: 1rem;

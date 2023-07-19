@@ -91,9 +91,11 @@ const Observer = new MutationObserver(mutations => {
         : updateActiveThumbnail(thumbnails)
 
         function updateActiveThumbnail(container) {
-            const imgNumber = getComputedStyle(mutation.target)
-            .getPropertyValue('background-image').at(-7);
+            let imgNumber = getComputedStyle(mutation.target)
+            .getPropertyValue('background-image').match(/\d+/g)
             
+            imgNumber = imgNumber[imgNumber.length - 1];
+
             [...container].find(thumbnail => 
                 thumbnail.classList.contains('active'))
                 .classList.toggle('active');

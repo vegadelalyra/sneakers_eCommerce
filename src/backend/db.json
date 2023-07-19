@@ -5,6 +5,7 @@
             "name": "Fall Limited Edition Sneakers",
             "about": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
             "price": 125,
+            "genre": "men",
             "imgs" : [
                 "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-1.jpg",
                 "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-2.jpg",
@@ -12,7 +13,19 @@
                 "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689613379/sprint2/image-product-4.jpg"
             ]
         },
-        {}
+        {
+            "id" : 2,
+            "name": "Chunky Sneakers",
+            "about": "Minimalist chunky low-top leather sneakers with round toe, loop straps, plain print, leather lining/insole, PVC outsole.",
+            "price": 130,
+            "genre": "women",
+            "imgs": [
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689739813/sprint2/2/image-product-1.webp",
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689739813/sprint2/2/image-product-2.webp",
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689739813/sprint2/2/image-product-3.webp",
+                "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689739813/sprint2/2/image-product-4.webp"
+            ]
+        }
     ],
     "orders": []
 }
