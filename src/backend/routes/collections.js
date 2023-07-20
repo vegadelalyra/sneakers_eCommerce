@@ -1,6 +1,7 @@
 import { server } from './pageTitle&dbURL.js'
 
 export async function collections () {
+    // Notify success
     console.log('[ /', window.location.hash, '] rendered.')
 
     // Overcome dead-cached imported module of a deleted HTML

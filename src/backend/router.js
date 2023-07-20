@@ -22,7 +22,7 @@ async function Router () {
   const pickedProduct = location.match(/\d+/g) 
   if (!!pickedProduct) localStorage
   .setItem('fetched product', pickedProduct.map(Number))  
-console.log(location);
+  
   // Random fetched products from Home Route
   const productID = `product/${localStorage.getItem('fetched product')}` 
   if (location == productID) return Routes['productID']()

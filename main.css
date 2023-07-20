@@ -482,6 +482,9 @@ body {
   cursor: pointer;
   opacity: 0.85;
 }
+.cart-modal__checkout-link {
+  text-decoration: none;
+}
 
 .modal-gallery {
   width: 560px;
