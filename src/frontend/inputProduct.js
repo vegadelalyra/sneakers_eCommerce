@@ -70,9 +70,8 @@ const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 
 if (Object.values(Cart).length) {
     
-    Object.values(Cart)
-    .forEach(Product => addToCart(Product))
-
+    Object.values(Cart).forEach(Product => addToCart(Product))
+    
     const inCartProductsAmount = Object.values(Cart)
     .map(Product => Product.quant).reduce((a, b) => a + b)
 
@@ -93,17 +92,22 @@ addToCartBtn.onclick = () => {
     lastValue = lastValue + userInputNumber
     cartNotification.innerText = lastValue
     cartNotification.style.display = 'block'
-    userInput.value = userInputNumber = 0
-
-    document.querySelector('.cart-empty').style.display = 'none'
-    document.querySelector('.cart-modal__checkout').style.display = 'flex'
 
     const Product = {}
     Product['title'] = document.querySelector('.details__title').innerHTML
     Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0].trim()
+    Product['quant'] = document.querySelector(`#${Product.title.replaceAll(' ', '')}`)?.innerText || userInputNumber
+    if (typeof Product.quant == 'string') Product.quant = userInputNumber + Number(Product.quant
+    .slice(Product.quant.indexOf('x') + 1, Product.quant.indexOf('x') + 2))
     Product['image'] = document.querySelector('.gallery__image-container').style.backgroundImage
     Product.image = Product.image.slice(4, Product.image.lastIndexOf(')'))
-    Product['quant'] = lastValue
+    .replace('w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/', '')
+
+    userInput.value = userInputNumber = 0
+
+
+    document.querySelector('.cart-empty').style.display = 'none'
+    document.querySelector('.cart-modal__checkout').style.display = 'flex'
 
     Cart[Product.title] ? modifyCart() : addToCart(Product) 
     
@@ -112,6 +116,7 @@ addToCartBtn.onclick = () => {
     console.log( '[', Product.title, '\n', Product.price, 
     'x', Product.quant, ']', 'added to Cart')
     toggleAddToCartBtn()
+    
 
     function modifyCart(){
         document.querySelector(`#${Product.title.replaceAll(' ', '')}`)
@@ -142,28 +147,29 @@ function addToCart(Product){
     productContainer.innerHTML += template
     
     // [ DELETE PRODUCT FROM CART ] BEGINNING
-    productContainer.querySelector(`[name=${ProductID}]`).onclick = () => {
+    document.querySelectorAll('.cart-modal__delete')
+    .forEach(x => x.onclick = function(){ 
         const removedProduct = productContainer
-        .querySelector(`[pid="${ProductID}"]`)
+        .querySelector(`[pid="${this.name}"]`)
         productContainer.removeChild(removedProduct)
 
-        delete Cart[Product.title]
-        localStorage.setItem('sneakers cart', JSON.stringify(Cart))
+        let name = this.previousElementSibling.querySelector('p').innerText 
+        let quant = this.previousElementSibling.querySelector('p:nth-child(2)').innerText
+        quant = Number(quant.slice(quant.indexOf('x') + 1, quant.lastIndexOf('$')).trim())
 
-        cartNotification.innerHTML = lastValue 
-        = lastValue - Product.quant
+        delete Cart[name]
+        localStorage.setItem('sneakers cart', JSON.stringify(Cart))
+        cartNotification.innerHTML = lastValue = lastValue - quant
         
         if (productContainer.children.length != 1) return 
 
-        lastValue = 0
         cartNotification.style.display = 'none'
         document.querySelector('.cart-empty').style.display = 'block'
         document.querySelector('.cart-modal__checkout').style.display = 'none'
 
         console.log(`[ ${Product.title} ] \nremoved from Cart`)
-    }
+    })
     // [ DELETE PRODUCT FROM CART ] ENDING
-
 }       
 // [ ADD TO CART ] ENDING
 
