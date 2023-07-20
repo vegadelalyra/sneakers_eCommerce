@@ -1,6 +1,40 @@
 import { server } from './pageTitle&dbURL.js'
 
 export async function collections () {
-    console.log('[ /#collections ] rendered.')
-    // document.body.innerHTML = '<h1>hola</h1>'
+    console.log('[ /', window.location.hash, '] rendered.')
+
+    // Overcome dead-cached imported module of a deleted HTML
+    if (sessionStorage.getItem('collections') == 1) {
+        location.reload()
+        return sessionStorage.removeItem('collections') 
+    }; sessionStorage.setItem('collections', 1)
+
+    // Get template
+    const templatePath = '/src/backend/templates/collections.html'
+    let template = await fetch(templatePath)
+    .then(html => html.text())
+    document.body.innerHTML = template
+
+    // Fetch all products images links
+    const Products = await fetch(server.endPoint)
+    .then(res => res.json())
+    .then(json => json.products)
+    .then(products => products.map(product => product.imgs))
+    console.log(Products)
+
+    // Import dynamically required scripts
+    await (async () => { await import('../../frontend/hamburguerMenu.js')})()
+
+    // [ CHANGE HTML ELEMENTS ]
+    const getItem = bem => document.querySelector(bem)
+
+    // litle fixes to styles
+    document.body.style.overflow = 'auto'
+
+    // title
+    document.title = server.PageTitle + ' | ' + 'Collections'
+
+    // metadata
+    getItem('meta[name="description"]')
+    .setAttribute('content', 'SNEAKERS Autumn Limited Collection')
 }

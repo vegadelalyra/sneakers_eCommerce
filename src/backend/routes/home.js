@@ -2,7 +2,7 @@ import { server } from './pageTitle&dbURL.js'
 
 export async function home () {
     // Notify about sucess
-    console.log('[ /# ] rendered.')
+    console.log('[ /', window.location.hash, '] rendered.')
 
     // Overcome dead-cached imported module of a deleted HTML
     if (sessionStorage.getItem('#') == 1) {
@@ -10,6 +10,7 @@ export async function home () {
         return sessionStorage.removeItem('#') }
     sessionStorage.setItem('#', 1)
 
+<<<<<<< HEAD
     // Get template
     const templatePath = '/src/backend/templates/home.html'
     let template = await fetch(templatePath)
@@ -21,17 +22,12 @@ export async function home () {
 }
 
 async function renderHome() {
+=======
+>>>>>>> main
     // Get random product [just for fun]
-    const endPoint = server.endPoint
-
-    const {indexes, products: Products} = await fetch(endPoint)
+    const indexes = await fetch(server.endPoint)
         .then(res => res.json())
-        .then(json => {
-            return { 
-                products: json.products,
-                indexes : json.products.map(p => p.id)
-            }
-        })
+        .then(json => json.products.map(p => p.id))
 
     // Guarantee to never fetch the same product
     let any, otherProduct = () => {
@@ -41,6 +37,7 @@ async function renderHome() {
         : sessionStorage.setItem('productID', any)
     }; otherProduct()
 
+<<<<<<< HEAD
     // fetch a random different product
     const randomProduct = await Products[any]
 
@@ -78,4 +75,9 @@ async function renderHome() {
 
     // Import and attach all frontend events
     await import('/src/frontend.js')
+=======
+    // reroute to a single page of a random product
+    localStorage.setItem('fetched product', JSON.stringify(any))
+    return window.location.hash = '#product/' + any
+>>>>>>> main
 }

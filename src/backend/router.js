@@ -4,7 +4,7 @@ const Routes = {
     404 : error, 
     '/#' : home,
     'collections' : collections,
-    'products/:id' : product,
+    'productID' : product,
     'checkout' : checkout,
 }
 
@@ -15,6 +15,11 @@ async function Router () {
   let location = window.location.hash.replace('#', '')
   if (location.length == 0) location = '/#'
 
+  // Guard Clause for random fetched products from Home route
+  const productID = `product/${localStorage.getItem('fetched product')}` 
+  if (location == productID) return Routes['productID']()
+
+  // Default behaviour: render standard routes
   const route = Routes[location] || Routes[404]
   route();
 }

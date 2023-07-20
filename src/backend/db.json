@@ -64,7 +64,86 @@
                 "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689805552/sprint2/5/image-product-3.jpg",
                 "https://res.cloudinary.com/vegadelalyra/image/upload/c_thumb,w_200,g_face/v1689805552/sprint2/5/image-product-4.jpg"
             ]
+        },
+		{
+            "id" : 6,
+            "name": "Urban Edge High-Tops",
+            "about": "These Urban Edge High-Tops are the perfect combination of urban style and comfort. Made with high quality leather and a durable rubber sole, these sneakers will keep you fashionable on the city streets.",
+            "price": 185,
+            "genre": "men",
+            "imgs" : [
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816812/sprint2/6/image-product-1.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816803/sprint2/6/image-product-2.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816794/sprint2/6/image-product-3.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816784/sprint2/6/image-product-4.jpg"
+            ]
+        },
+		{
+            "id" : 7,
+            "name": "Elevate Platform Sandals",
+            "about": "Add a touch of height and style to your casual looks with the Elevate Platform Sandals.",
+            "price": 155,
+            "genre": "women",
+            "imgs" : [
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816752/sprint2/7/image-product-1.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816736/sprint2/7/image-product-2.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816727/sprint2/7/image-product-3.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816718/sprint2/7/image-product-4.jpg"
+            ]
+        },
+		{
+            "id" : 8,
+            "name": "Street King Retro Sneakers",
+            "about": "The Street King Retro Sneakers are inspired by classic streetwear style. With a mix of premium materials like suede and mesh, these sneakers offer an eye-catching look and excellent breathability.",
+            "price": 170,
+            "genre": "men",
+            "imgs" : [
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816662/sprint2/8/image-product-1.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816647/sprint2/8/image-product-2.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816622/sprint2/8/image-product-3.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816610/sprint2/8/image-product-4.jpg"
+            ]
+        },
+		{
+            "id" : 9,
+            "name": "Serenity Slip-Ons",
+            "about": "These elegant women's shoes combine comfort and effortless style. Made with soft synthetic leather and a flexible sole, the Serenity Slip-Ons are ideal for any casual occasion.",
+            "price": 145,
+            "genre": "women",
+            "imgs" : [
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816542/sprint2/9/image-product-1.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816527/sprint2/9/image-product-2.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816514/sprint2/9/image-product-3.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816502/sprint2/9/image-product-4.jpg"
+            ]
+        },
+		{
+            "id" : 10,
+            "name": "RebelX Tech Trainers",
+            "about": "The RebelX Tech Trainers combine urban aesthetics with advanced technological features.",
+            "price": 195,
+            "genre": "men",
+            "imgs" : [
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816407/sprint2/10/image-product-1.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816389/sprint2/10/image-product-2.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816378/sprint2/10/image-product-3.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816366/sprint2/10/image-product-4.jpg"
+            ]
+        },
+		{
+            "id" : 11,
+            "name": "Breeze Canvas Sneakers",
+            "about": "The Breeze Canvas Sneakers are a fusion of fashion and practicality. Made with breathable canvas and a durable rubber sole, these casual shoes are ideal for summer days.",
+            "price": 130,
+            "genre": "women",
+            "imgs" : [
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816298/sprint2/11/image-product-1.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816284/sprint2/11/image-product-2.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816268/sprint2/11/image-product-3.webp",
+                "https://res.cloudinary.com/dsgfgsjud/image/upload/c_thumb,w_200,g_face/v1689816227/sprint2/11/image-product-4.webp"
+            ]
         }
     ],
     "orders": []
 }
+
