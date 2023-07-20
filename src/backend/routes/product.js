@@ -8,7 +8,7 @@ export async function product () {
     // Fetch the randomnly picked product
     const Product = await fetch(server.endPoint)
     .then(res => res.json())
-    .then(json => json.products[productID])
+    .then(json => json.products[productID - 1])
 
     // Get template
     const templatePath = '/src/backend/templates/home.html'
