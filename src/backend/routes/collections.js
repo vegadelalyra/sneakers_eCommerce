@@ -16,11 +16,18 @@ export async function collections () {
     document.body.innerHTML = template
 
     // Fetch all products images links
-    const Products = await fetch(server.endPoint)
+    let ShuffledProducts = await fetch(server.endPoint)
     .then(res => res.json())
     .then(json => json.products)
     .then(products => products.map(product => product.imgs))
-    console.log(Products)
+    .then(albumes => albumes.map((album, volume) => 
+    album.map(photo => { 
+        photo = photo.replace('c_thumb,w_200,g_face/', '')
+        console.log(photo)
+        return {"id" : volume + 1, "url": photo }})))
+    .then(collection => collection.flat())
+
+    ShuffledProducts = shuffleArray(ShuffledProducts)
 
     // Import dynamically required scripts
     await (async () => { await import('../../frontend/hamburguerMenu.js')})()
@@ -37,4 +44,17 @@ export async function collections () {
     // metadata
     getItem('meta[name="description"]')
     .setAttribute('content', 'SNEAKERS Autumn Limited Collection')
+
+    // [COLLECTIONS SECTION]
+    const grids = document.querySelectorAll('[alt="sneaker"]')
+    .forEach((grid, index) => grid.src = ShuffledProducts[index].url)
+
+}
+// Interesting Fisher-Yates (also known as Knuth) shuffle algorithm.
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
