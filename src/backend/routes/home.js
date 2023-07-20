@@ -14,9 +14,9 @@ export async function home () {
     const templatePath = '/src/backend/templates/home.html'
     let template = await fetch(templatePath)
     .then(html => html.text())
-    document.body.innerHTML = template
-
-    // Fetch data from database json-server
+    
+    // Fetch data from database hosted server
+    new Promise( r => document.body.innerHTML = template)
     return await renderHome()
 }
 
@@ -42,8 +42,8 @@ async function renderHome() {
     }; otherProduct()
 
     // fetch a random different product
-    const randomProduct = Products[any]
-    
+    const randomProduct = await Products[any]
+
     // [Change html elements]
     const getItem = bem => document.querySelector(bem)
 
