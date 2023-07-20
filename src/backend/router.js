@@ -13,9 +13,17 @@ window.addEventListener('hashchange', Router)
 
 async function Router () {
   let location = window.location.hash.replace('#', '')
+
+  // [GUARD CLAUSES]
+  // Home Route Guard Clause
   if (location.length == 0) location = '/#'
 
-  // Guard Clause for random fetched products from Home route
+  // Picked products from changing URL or clicking collection
+  const pickedProduct = location.match(/\d+/g) 
+  if (!!pickedProduct) localStorage
+  .setItem('fetched product', pickedProduct.map(Number))  
+
+  // Random fetched products from Home Route
   const productID = `product/${localStorage.getItem('fetched product')}` 
   if (location == productID) return Routes['productID']()
 

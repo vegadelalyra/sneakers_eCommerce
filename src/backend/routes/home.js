@@ -4,12 +4,6 @@ export async function home () {
     // Notify about sucess
     console.log('[ /', window.location.hash, '] rendered.')
 
-    // Overcome dead-cached imported module of a deleted HTML
-    if (sessionStorage.getItem('#') == 1) {
-        location.reload()
-        return sessionStorage.removeItem('#') }
-    sessionStorage.setItem('#', 1)
-
     // Get random product [just for fun]
     const indexes = await fetch(server.endPoint)
         .then(res => res.json())

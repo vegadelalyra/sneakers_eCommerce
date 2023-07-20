@@ -1,6 +1,12 @@
 import { server } from './pageTitle&dbURL.js'
 
 export async function product () {
+    // Overcome dead-cached imported module of a deleted HTML
+    if (sessionStorage.getItem('#') == 1) {
+        location.reload()
+        return sessionStorage.removeItem('#') }
+    sessionStorage.setItem('#', 1)
+    
     // Get product ID to render and notify about sucess
     const productID = localStorage.getItem('fetched product')
     console.log('[ /', window.location.hash, '] rendered.')
