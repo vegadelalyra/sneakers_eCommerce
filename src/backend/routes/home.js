@@ -2,7 +2,7 @@ import { server } from './pageTitle&dbURL.js'
 
 export async function home () {
     // Notify about sucess
-    console.log('[ /# ] rendered.')
+    console.log('[ /', window.location.hash, '] rendered.')
 
     // Overcome dead-cached imported module of a deleted HTML
     if (sessionStorage.getItem('#') == 1) {
@@ -16,11 +16,6 @@ export async function home () {
     .then(html => html.text())
     document.body.innerHTML = template
 
-    // Fetch data from database json-server
-    return await renderHome()
-}
-
-async function renderHome() {
     // Get random product [just for fun]
     const endPoint = server.endPoint
 
@@ -43,7 +38,11 @@ async function renderHome() {
 
     // fetch a random different product
     const randomProduct = Products[any]
-    
+    localStorage.setItem('fetched product', JSON.stringify(any))
+    return window.location.hash = '#product/' + any
+}
+
+async function renderHome() {
     // [Change html elements]
     const getItem = bem => document.querySelector(bem)
 
