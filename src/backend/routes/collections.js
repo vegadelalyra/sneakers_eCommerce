@@ -15,6 +15,13 @@ export async function collections () {
     .then(html => html.text())
     document.body.innerHTML = template
 
+    // Fetch all products images links
+    const Products = await fetch(server.endPoint)
+    .then(res => res.json())
+    .then(json => json.products)
+    .then(products => products.map(product => product.imgs))
+    console.log(Products)
+
     // Import dynamically required scripts
     await (async () => { await import('../../frontend/hamburguerMenu.js')})()
 
