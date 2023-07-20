@@ -413,7 +413,7 @@ body {
   box-shadow: 3px 3px 10px;
   min-height: 260px;
   top: 50px;
-  right: 195px;
+  right: 50px;
   position: absolute;
   background-color: hsl(0, 0%, 100%);
 }
@@ -484,7 +484,7 @@ body {
 }
 
 .modal-gallery {
-  width: 550px;
+  width: 560px;
   height: 100%;
 }
 .modal-gallery__background {

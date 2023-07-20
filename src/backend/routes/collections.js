@@ -1,26 +1,33 @@
 import { server } from './pageTitle&dbURL.js'
 
-
-
 export async function collections () {
-    console.log('[ /#collections ] rendered.')
+    console.log('[ /', window.location.hash, '] rendered.')
 
-        // Get template
-        const templatePath = '/src/backend/templates/collections.html'
-        let template = await fetch(templatePath)
-        .then(html => html.text())
-        document.body.innerHTML = template
+    // Overcome dead-cached imported module of a deleted HTML
+    if (sessionStorage.getItem('collections') == 1) {
+        location.reload()
+        return sessionStorage.removeItem('collections') 
+    }; sessionStorage.setItem('collections', 1)
 
-        // [ CHANGE HTML ELEMENTS ]
-        const getItem = bem => document.querySelector(bem)
+    // Get template
+    const templatePath = '/src/backend/templates/collections.html'
+    let template = await fetch(templatePath)
+    .then(html => html.text())
+    document.body.innerHTML = template
 
-        // litle fixes to styles
-        document.body.style.overflow = 'auto'
+    // Import dynamically required scripts
+    await (async () => { await import('../../frontend/hamburguerMenu.js')})()
 
-        // title
-        document.title = server.PageTitle + ' | ' + 'Collections'
+    // [ CHANGE HTML ELEMENTS ]
+    const getItem = bem => document.querySelector(bem)
 
-        // metadata
-        getItem('meta[name="description"]')
-        .setAttribute('content', 'SNEAKERS Autumn Limited Collection')
+    // litle fixes to styles
+    document.body.style.overflow = 'auto'
+
+    // title
+    document.title = server.PageTitle + ' | ' + 'Collections'
+
+    // metadata
+    getItem('meta[name="description"]')
+    .setAttribute('content', 'SNEAKERS Autumn Limited Collection')
 }
