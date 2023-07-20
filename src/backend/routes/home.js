@@ -22,25 +22,28 @@ export async function home () {
 
 async function renderHome() {
     // Get random product [just for fun]
-    const endPoint = server.endPoint + '/products/'
+    const endPoint = server.endPoint
 
-    const ids = await fetch(endPoint)
+    const {indexes, products: Products} = await fetch(endPoint)
         .then(res => res.json())
-        .then(products => products
-            .map(product => product.id))
+        .then(json => {
+            return { 
+                products: json.products,
+                indexes : json.products.map(p => p.id)
+            }
+        })
 
     // Guarantee to never fetch the same product
     let any, otherProduct = () => {
-        any = ids[Math.floor(Math.random() * ids.length)]
+        any = indexes[Math.floor(Math.random() * indexes.length)]
         sessionStorage.getItem('productID') == any
         ? otherProduct() 
         : sessionStorage.setItem('productID', any)
     }; otherProduct()
 
     // fetch a random different product
-    const randomProduct = await fetch(endPoint + any)
-    .then(randomProduct => randomProduct.json())   
-
+    const randomProduct = Products[any]
+    
     // [Change html elements]
     const getItem = bem => document.querySelector(bem)
 
