@@ -573,7 +573,7 @@ body {
 }
 
 .content-container {
-  background-color: hsla(0, 0%, 0%, 0.5);
+  background-color: hsl(0, 0%, 100%);
   display: grid;
   height: 100%;
   grid-template-columns: repeat(2, 1fr);

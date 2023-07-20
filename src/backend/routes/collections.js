@@ -30,10 +30,14 @@ export async function collections () {
 
     // Import dynamically required scripts
     await (async () => { await import('../../frontend/hamburguerMenu.js')})()
+    await (async () => { await import('../../frontend/Cart.js')})()
     await (async () => { await import('../../backend.js')})()
 
     // [ CHANGE HTML ELEMENTS ]
     const getItem = bem => document.querySelector(bem)
+
+    // litle fixes to styles
+    document.querySelector('div').style.display = 'fixed'
 
     // title
     document.title = server.PageTitle + ' | ' + 'Collections'

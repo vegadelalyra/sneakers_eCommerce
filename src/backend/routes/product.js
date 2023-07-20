@@ -59,6 +59,9 @@ async function renderRandom(randomProduct) {
     document.querySelector('.gallery__image-container')
     .style.backgroundImage = `url(${mainImg_curatedURL})`
 
+    // Change little styles
+    window.scrollTo(0, 0)
+
     // Import and attach all frontend events
     await import('/src/frontend.js')
 }
