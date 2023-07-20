@@ -1,0 +1,20 @@
+.preloader
+    position: absolute
+    top: 35%
+    left: 50%
+    transform: translate(-50%, -50%)
+    cursor: none
+    max-width: 350px
+    width: 100%
+
+    animation: flicker 0.69s infinite
+
+    @keyframes flicker 
+        0%, 100% 
+            opacity: 0
+        50%, 80%
+            opacity: 1
+    
+
+    @media (min-width: 1115px)
+        max-width: 1200px
