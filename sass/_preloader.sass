@@ -1,11 +1,18 @@
+@use 'var'
+    
 .preloader
-    position: absolute
+    position: fixed
     top: 35%
     left: 50%
     transform: translate(-50%, -50%)
     cursor: none
     max-width: 350px
     width: 100%
+    &__container
+        background-color: var.$White
+        width: 100vw
+        height: 100vh
+
 
     animation: flicker 0.69s infinite
 

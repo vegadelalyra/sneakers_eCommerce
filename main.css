@@ -573,7 +573,6 @@ body {
 }
 
 .content-container {
-  margin-top: 10px;
   background-color: hsla(0, 0%, 0%, 0.5);
   display: grid;
   height: 100%;
@@ -582,8 +581,6 @@ body {
   justify-content: center;
   align-content: stretch;
   justify-items: center;
-  column-gap: 10px;
-  row-gap: 10px;
 }
 .content-container__items {
   height: 100%;
@@ -600,7 +597,7 @@ body {
 }
 
 .preloader {
-  position: absolute;
+  position: fixed;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -608,6 +605,11 @@ body {
   max-width: 350px;
   width: 100%;
   animation: flicker 0.69s infinite;
+}
+.preloader__container {
+  background-color: hsl(0, 0%, 100%);
+  width: 100vw;
+  height: 100vh;
 }
 @keyframes flicker {
   0%, 100% {

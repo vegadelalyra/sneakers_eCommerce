@@ -22,8 +22,7 @@ export async function collections () {
     .then(products => products.map(product => product.imgs))
     .then(albumes => albumes.map((album, volume) => 
     album.map(photo => { 
-        photo = photo.replace('c_thumb,w_200,g_face/', '')
-        console.log(photo)
+        photo = photo.replace('/c_thumb,w_200,g_face', '')
         return {"id" : volume + 1, "url": photo }})))
     .then(collection => collection.flat())
 
@@ -31,12 +30,10 @@ export async function collections () {
 
     // Import dynamically required scripts
     await (async () => { await import('../../frontend/hamburguerMenu.js')})()
+    await (async () => { await import('../../backend.js')})()
 
     // [ CHANGE HTML ELEMENTS ]
     const getItem = bem => document.querySelector(bem)
-
-    // litle fixes to styles
-    document.body.style.overflow = 'auto'
 
     // title
     document.title = server.PageTitle + ' | ' + 'Collections'
@@ -46,9 +43,24 @@ export async function collections () {
     .setAttribute('content', 'SNEAKERS Autumn Limited Collection')
 
     // [COLLECTIONS SECTION]
-    const grids = document.querySelectorAll('[alt="sneaker"]')
-    .forEach((grid, index) => grid.src = ShuffledProducts[index].url)
+    function recursivePrint() {
+        const img = ShuffledProducts.at(-1).url
+        const href = ShuffledProducts.at(-1).id
 
+        document.querySelector('section').innerHTML += `
+        <div class="content-container__items">
+            <a href="#product/${href}">
+              <img src="${img}" alt="sneaker">
+            </a>
+        </div>`
+        
+        ShuffledProducts.pop()
+        
+        if (ShuffledProducts.length) return recursivePrint()
+        return document.querySelector('div').style.display = 'none'
+    } recursivePrint()
+    // litle fixes to styles
+    document.body.style.overflow = 'auto'
 }
 // Interesting Fisher-Yates (also known as Knuth) shuffle algorithm.
 function shuffleArray(array) {
