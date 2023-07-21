@@ -1,0 +1,33 @@
+@use 'mixins'
+
+.checkout-modal__background
+    @include mixins.modal-background
+    display: none
+    place-content: center
+
+.checkout-modal
+  background-color: #fff
+  max-width: 90%
+  width: 300px
+  padding: 20px
+  border-radius: 10px
+
+  input[type="text"]
+    width: 100%
+    padding: 10px
+    margin-bottom: 10px
+    border: 1px solid #ccc
+    border-radius: 5px
+
+  button
+    width: 100%
+    padding: 10px
+    background-color: #007BFF
+    color: #fff
+    border: none
+    border-radius: 5px
+    cursor: pointer
+
+@media (min-width: 768px)
+  .checkout-modal
+    width: 400px

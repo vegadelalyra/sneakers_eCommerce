@@ -67,12 +67,29 @@ async function renderRandom(randomProduct) {
 
 
     document.querySelector('.cart-modal__checkout')
-.onclick = async () => {
-    console.log('HELLO XD')
+.onclick = async function() {
+    const form = document.createElement('form')
+
+    form.innerHTML = `
+<div class="checkout-modal__background">
+    <div class="checkout-modal">
+        <form>
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Identity Document">
+            <input type="text" placeholder="Credit Card Number">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>`
+
+    document.body.appendChild(form)
+
+    return
 
     const dataToStore = {
-        key1: 'value1',
-        key2: 'value2',
+        name: 'value1',
+        cc: 'value2',
+        card: 'value3,'
         // Add more key-value pairs as needed
     };
 
