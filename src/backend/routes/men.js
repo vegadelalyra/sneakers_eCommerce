@@ -20,12 +20,11 @@ export async function men () {
     let ShuffledProducts = await fetch(server.endPoint)
     .then(res => res.json())
     .then(json => json.products)
-    .then(products => products.map(product => product.imgs))
-    .then(albumes => albumes.map((album, volume) => 
-    album.map(photo => { 
+    .then(men => men.map(product => product.genre != 'men' ? undefined : product )
+    ?.map(product => product?.imgs)?.map((album, volume) => 
+    album?.map(photo => { 
         photo = photo.replace('/c_thumb,w_200,g_face', '')
-        return {"id" : volume + 1, "url": photo }})))
-    .then(collection => collection.flat())
+        return {"id" : volume + 1, "url": photo }}))?.flat())
 
     ShuffledProducts = shuffleArray(ShuffledProducts)
 
@@ -49,6 +48,13 @@ export async function men () {
 
     // [COLLECTIONS SECTION]
     function recursivePrint() {
+        if (!ShuffledProducts.at(-1)) {
+            ShuffledProducts.pop()
+            
+            if (ShuffledProducts.length) return recursivePrint()
+            return document.querySelector('div').style.display = 'none'
+        } 
+
         const img = ShuffledProducts.at(-1).url
         const href = ShuffledProducts.at(-1).id
 

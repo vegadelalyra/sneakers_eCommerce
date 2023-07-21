@@ -64,4 +64,34 @@ async function renderRandom(randomProduct) {
 
     // Import and attach all frontend events
     await import('/src/frontend.js')
+
+
+    document.querySelector('.cart-modal__checkout')
+.onclick = async () => {
+    console.log('HELLO XD')
+
+    const dataToStore = {
+        key1: 'value1',
+        key2: 'value2',
+        // Add more key-value pairs as needed
+    };
+
+    await fetch('http://localhost:3000/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToStore)
+    })  .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Data has been successfully stored in JSON Bin:');
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Error storing data in JSON Bin:', error);
+      });
+}
 }
