@@ -1,13 +1,54 @@
-
 <head>
+  <title> SNEAKERS | Checkout </title>
   <meta charset="UTF-8">
-  <title> Credit Card Form for Payment Gateway </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="src\backend\templates\checkoutForm\style.css">
-
+  <link rel="stylesheet" href="src/backend/templates/checkoutForm/style.css">
+  <link rel="stylesheet" href="main.css">
+  <script defer type="module" src="./main.js"></script>
+  
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<header class="header">
+  <div class="header__navigation">
+    <img class="header__menu" src="./images/icon-menu.svg" alt="menu icon">
+    <img class="header__logo" src="./images/logo.svg" alt="logo">
+  
+    <nav class="navbar">
+      <ul class="navbar__items">
+        <li><a href="#" class="navbar__link">Collections</a></li>
+        <li><a href="#" class="navbar__link">Men</a></li>
+        <li><a href="#" class="navbar__link">Women</a></li>
+        <li><a href="https://github.com/vegadelalyra" target="_blank" rel="noopener noreferrer" class="navbar__link">About</a></li>
+        <li><a href="https://www.linkedin.com/in/vegadelalyra/" target="_blank" rel="noopener noreferrer" class="navbar__link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <div class="header__cart-avatar">
+    <div class="header__cart">
+      <div class="header__cart--notification">0</div>
+      <img src="./images/icon-cart.svg" alt="cart">
+    </div>
+    <img class="header__avatar" src="./images/image-avatar.png" alt="avatar">
+  </div>
+</header>
+
+      <!-- modal navbar [beginning] -->
+      <div class="modal-navbar__background">
+        <nav class="modal-navbar">
+          <img class="modal-navbar__close-icon" src="./images/icon-close.svg" alt="">
+          <ul class="modal-navbar__items">
+            <li><a href="#" class="modal-navbar__link">Collections</a></li>
+            <li><a href="#" class="modal-navbar__link">Men</a></li>
+            <li><a href="#" class="modal-navbar__link">Women</a></li>
+            <li><a href="https://github.com/vegadelalyra" target="_blank" rel="noopener noreferrer" class="modal-navbar__link">About</a></li>
+            <li><a href="https://www.linkedin.com/in/vegadelalyra/" target="_blank" rel="noopener noreferrer" class="modal-navbar__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- modal navbar [ending] -->
 <div class="wrapper" id="app">
     <div class="card-form">
       <div class="card-list">
@@ -169,8 +210,7 @@
     
   </div>
 <!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
-<script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'></script><script  src="src\backend\templates\checkoutForm\script.js"></script>
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'defer></script>
+<script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'defer></script>
+  <script  src="src/backend/templates/checkoutForm/script.js" defer></script>
 </body>
-

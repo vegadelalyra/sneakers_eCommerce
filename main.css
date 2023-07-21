@@ -412,14 +412,14 @@ body {
   border-radius: 0.5rem;
   box-shadow: 3px 3px 10px;
   min-height: 260px;
-  top: 50px;
-  right: 50px;
+  top: 45px;
+  right: 65px;
   position: absolute;
   background-color: hsl(0, 0%, 100%);
 }
 @media (min-width: 1150px) {
   .cart-modal {
-    top: 80px;
+    top: 70px;
     right: 270px;
   }
 }
@@ -451,6 +451,7 @@ body {
 .cart-modal__image {
   width: 17%;
   border-radius: 0.25rem;
+  margin-right: 10px;
 }
 .cart-modal__price span {
   color: hsl(0, 0%, 0%);

@@ -1,11 +1,12 @@
-import { error, home, product, collections, checkout } from './routes.js'
+import { error, home, product, collections, women, men } from './routes.js'
 
 const Routes = {
     404 : error, 
     '/#' : home,
     'collections' : collections,
     'productID' : product,
-    'checkout' : checkout,
+    'collections/women': women,
+    'collections/men': men,
 }
 
 Router()

@@ -13,14 +13,11 @@ export async function checkout() {
     let template = await fetch(templatePath)
     .then(html => html.text())
 
-    const miau = document.createElement('html')
-    document.open()
     document.write(template)
-    document.close()
-
+    
+    
     // [Change html elements]]
     const getItem = bem => document.querySelector(bem)
-
     // some little styles
     // document.body.style.overflow = 'none'
 
