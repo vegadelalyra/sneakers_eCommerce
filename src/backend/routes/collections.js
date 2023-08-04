@@ -26,7 +26,7 @@ export async function collections () {
         photo = photo.replace('/c_thumb,w_200,g_face', '')
         return {"id" : volume + 1, "url": photo }})))
     .then(collection => collection.flat())
-
+    // Randomize products images order on each load
     ShuffledProducts = shuffleArray(ShuffledProducts)
 
     // Import dynamically required scripts
@@ -48,6 +48,8 @@ export async function collections () {
     .setAttribute('content', 'SNEAKERS Autumn Limited Collection')
 
     // [COLLECTIONS SECTION]
+
+    // rendering views + each img hyperlinked
     function recursivePrint() {
         const img = ShuffledProducts.at(-1).url
         const href = ShuffledProducts.at(-1).id

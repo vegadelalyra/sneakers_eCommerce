@@ -174,7 +174,7 @@ function addToCart(Product){
 // [ CART MODAL ] BEGINNING 
 const cartIconBtn = document.querySelector('.header__cart')
 const cartModal = document.querySelector('.cart-modal')
-// const priceModal = document.querySelector('.cart-modal__price')
+const checkoutBtn = document.querySelector('.cart-modal__checkout')
 
 cartIconBtn.onmouseover = function() {
     if (cartModal.classList.contains('show')) return 
@@ -195,4 +195,6 @@ cartIconBtn.onclick = function() {
     ? this.children[1].src = './images/icon-cart.svg' 
     : this.children[1].src = './images/icon-cart-orange.svg'
 }
+
+checkoutBtn.onclick = () => window.location.href = '#checkout'
 // [ CART MODAL ] ENDING

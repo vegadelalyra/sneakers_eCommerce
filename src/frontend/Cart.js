@@ -1,6 +1,7 @@
 // [ LOAD CART FROM LOCAL STORAGE ] BEGINNING
 const productContainer = document.querySelector('.cart-modal__checkout-container')
 const cartNotification = document.querySelector('.header__cart--notification')
+const checkoutButton = document.querySelector('.cart-modal__checkout')
 
 const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 
