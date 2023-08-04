@@ -193,6 +193,11 @@ input::-webkit-outer-spin-button {
 
 .expire-date .input-flex input { text-align: center; }
 
+.expire-date-labels {
+    display: flex;
+    justify-content: space-around;
+}
+
 .btn { border-radius: var(--radius); }
 
 .btn:active { transform: scale(0.99); }
@@ -229,7 +234,8 @@ input::-webkit-outer-spin-button {
 }
 
 .cart-products {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-height: 310px;
 }
 
@@ -401,3 +407,5 @@ input::-webkit-outer-spin-button {
     /* .discount-token { border-top: 1px solid var(--gainsboro); } */
 
 }
+
+.hidden { display: none; }

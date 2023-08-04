@@ -1,4 +1,4 @@
-import { server } from '../../routes/pageTitle&dbURL.js'
+import { server } from '../../../routes/pageTitle&dbURL.js'
 
 console.log('HELLO FROM AXIOS-BASED APP')
 
