@@ -653,7 +653,7 @@ body {
   position: relative;
   height: 110vh;
 }
-@media (min-width: 1150px) {
+@media (min-width: 1300px) {
   body {
     overflow: hidden;
   }

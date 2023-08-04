@@ -1,9 +1,8 @@
 // [ LOAD CART FROM LOCAL STORAGE ] BEGINNING
+export const cartNotification = document.querySelector('.header__cart--notification')
+export const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 const productContainer = document.querySelector('.cart-modal__checkout-container')
-const cartNotification = document.querySelector('.header__cart--notification')
 const checkoutButton = document.querySelector('.cart-modal__checkout')
-
-const Cart = JSON.parse(localStorage.getItem('sneakers cart')) || {}
 
 if (Object.values(Cart).length) {
     
@@ -19,8 +18,8 @@ if (Object.values(Cart).length) {
     document.querySelector('.cart-modal__checkout').style.display = 'flex'
 }
 // [ LOAD CART FROM LOCAL STORAGE ] ENDING
-let lastValue = parseInt(cartNotification.innerText)
-function addToCart(Product){
+export let lastValue = parseInt(cartNotification.innerText)
+export function addToCart(Product){
     const ProductID = Product.title.replaceAll(' ', '')
 
     const template = `
@@ -43,7 +42,7 @@ function addToCart(Product){
     
     // [ DELETE PRODUCT FROM CART ] BEGINNING
     document.querySelectorAll('.cart-modal__delete')
-    .forEach(x => x.onclick = function(){ 
+    .forEach(trashCan => trashCan.onclick = function(){ 
         const removedProduct = productContainer
         .querySelector(`[pid="${this.name}"]`)
         productContainer.removeChild(removedProduct)
@@ -55,7 +54,7 @@ function addToCart(Product){
         delete Cart[name]
         localStorage.setItem('sneakers cart', JSON.stringify(Cart))
         cartNotification.innerHTML = lastValue = lastValue - quant
-        
+
         if (productContainer.children.length != 1) return 
 
         cartNotification.style.display = 'none'
@@ -63,6 +62,7 @@ function addToCart(Product){
         document.querySelector('.cart-modal__checkout').style.display = 'none'
 
         console.log(`[ ${Product.title} ] \nremoved from Cart`)
+        return lastValue = 0
     })
     // [ DELETE PRODUCT FROM CART ] ENDING
 }       
@@ -92,4 +92,6 @@ cartIconBtn.onclick = function() {
     ? this.children[1].src = './images/icon-cart.svg' 
     : this.children[1].src = './images/icon-cart-orange.svg'
 }
+
+checkoutButton.onclick = () => window.location.href = '#checkout'
 // [ CART MODAL ] ENDING
