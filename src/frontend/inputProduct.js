@@ -80,12 +80,17 @@ addToCartBtn.onclick = async () => {
     Product['title'] = document.querySelector('.details__title').innerHTML
     Product['price'] = document.querySelector('.details__now').innerHTML.split('<')[0].trim()
     Product['quant'] = document.querySelector(`#${Product.title.replaceAll(' ', '')}`)?.innerText || userInputNumber
+    
     if (typeof Product.quant == 'string') Product.quant = userInputNumber + Number(Product.quant
     .slice(Product.quant.indexOf('x') + 1, Product.quant.indexOf('x') + 2))
     Product['image'] = document.querySelector('.gallery__image-container').style.backgroundImage
+    
     Product.image = Product.image.slice(4, Product.image.lastIndexOf(')'))
     .replace('w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/', '')
 
+    Product['href'] = '/#product/' + Product.image.split('/').at(-2)
+
+    console.log(Product.href)
     userInput.value = userInputNumber = 0
 
 
@@ -107,3 +112,4 @@ addToCartBtn.onclick = async () => {
         <span>$${Number(Product.price.slice(1)) * Product.quant}.00</span>`
     }
 }
+// [ ADD TO CART ] ENDING

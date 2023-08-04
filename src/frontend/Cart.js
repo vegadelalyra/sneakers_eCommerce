@@ -22,19 +22,21 @@ export let lastValue = parseInt(cartNotification.innerText)
 export function addToCart(Product){
     const ProductID = Product.title.replaceAll(' ', '')
 
-    const template = `
+    const template = /*html*/`
 
         <div class="cart-modal__details-container" pid="${ProductID}">
-            <img class="cart-modal__image" src=${Product.image} alt="thumbnail">
-            <div>
-                <p class="cart-modal__product">${Product.title}</p>
-                <p class="cart-modal__price" id="${ProductID}">
-                    ${Product.price} x${Product.quant} 
-                    <span>
-                        $${Number(Product.price.slice(1)) * Product.quant}.00
-                    </span>
-                </p>
-            </div>
+            <a href="${Product.href}">
+                <img class="cart-modal__image" src=${Product.image} alt="thumbnail">
+                <div>
+                    <p class="cart-modal__product">${Product.title}</p>
+                    <p class="cart-modal__price" id="${ProductID}">
+                        ${Product.price} x${Product.quant}
+                        <span>
+                            $${Number(Product.price.slice(1)) * Product.quant}.00
+                        </span>
+                    </p>
+                </div>
+            </a>
             <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete" name=${ProductID}>
         </div>`
 
