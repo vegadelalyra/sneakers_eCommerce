@@ -1,5 +1,5 @@
 // UPDATE FORM BASED ON PAYMENT METHOD [BEGINNING]
-const Form = document.querySelector('form')
+export const Form = document.querySelector('form')
 
 export async function updateForm(paymentMethod) {
     const paypal = [

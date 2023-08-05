@@ -11,18 +11,18 @@ export async function checkout() {
     }; sessionStorage.setItem('checkout', 1)
 
     // Get template
-    const templatePath = '/src/backend/templates/checkoutForm/checkout.html'
+    const templatePath = '/src/backend/templates/checkout.html'
     let template = await fetch(templatePath)
     .then(html => html.text())
     
     // Get styles
-    const stylesPath = '/src/backend/templates/checkoutForm/checkout.css'
+    const stylesPath = '/src/frontend/checkoutForm/checkout.css'
     const styles = document.createElement('link')
     styles.setAttribute('href', stylesPath)
     styles.setAttribute('rel', 'stylesheet')
 
     // Get events script (which imports axios-based app script)
-    const JSeventsPath = '/src/backend/templates/checkoutForm/src/events.js'
+    const JSeventsPath = '/src/frontend/checkoutForm/src/events.js'
     const JSevents = document.createElement('script')
     JSevents.setAttribute('src', JSeventsPath)
     JSevents.setAttribute('type', 'module')
