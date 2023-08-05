@@ -1,4 +1,8 @@
-import { error, home, product, collections, women, men, checkout } from './routes.js'
+import { 
+  error, home, 
+  product, collections, 
+  women, men, checkout 
+} from './routes.js'
 
 const Routes = {
     404 : error, 
@@ -20,8 +24,9 @@ async function Router () {
   // Home Route Guard Clause
   if (location.length == 0) location = '/#'
 
-  // Picked products from changing URL or clicking collection
-  const pickedProduct = location.match(/\d+/g) 
+  // Picked a product by changing URL or clicking collection
+  const pickedProduct = location.match(/\d+/g)
+   
   if (!!pickedProduct) localStorage
   .setItem('fetched product', pickedProduct.map(Number))  
   
@@ -31,7 +36,8 @@ async function Router () {
 
   // Default behaviour: render standard routes
   const route = Routes[location] || Routes[404]
-  route();
+  route()
+  
 }
 /**********************
  * HISTORY PUSH STATE *

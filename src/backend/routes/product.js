@@ -1,29 +1,43 @@
 import { server } from './pageTitle&dbURL.js'
 
 export async function product () {
+    // If comes from an inexistent product, say sorry
+    if (!!sessionStorage.getItem('error')) {
+        console.log(sessionStorage.getItem('error'))
+        sessionStorage.clear()
+    }
+
     // Overcome dead-cached imported module of a deleted HTML
     if (sessionStorage.getItem('#') == 1) {
         location.reload()
-        return sessionStorage.removeItem('#') }
-    sessionStorage.setItem('#', 1)
-    
-    // Get product ID to render and notify about sucess
+        return sessionStorage.removeItem('#') 
+    }; sessionStorage.setItem('#', 1)
+
+    // Get product ID to render it
     const productID = localStorage.getItem('fetched product')
-    console.log('[ /', window.location.hash, '] rendered.')
 
     // Fetch the randomnly picked product
     const Product = await fetch(server.endPoint)
     .then(res => res.json())
     .then(json => json.products[productID - 1])
+        
+    // if product doesn't exist. Get back
+    if (!Product) {
+        const messageError = `Product ${productID} doesn't exist yet!
+Here you have other product, though!`
+        sessionStorage.setItem('error', messageError)
+        return location.href = '/#'
+    }
 
-    // Get template
+    // Get template and notify about sucess
     const templatePath = '/src/backend/templates/home.html'
     let template = await fetch(templatePath)
     .then(html => html.text())
     document.body.innerHTML = template
+    console.log('[ /', window.location.hash, '] rendered.')
 
     // then, render it!
-    renderRandom(Product) 
+    renderRandom(Product)
 }
 
 async function renderRandom(randomProduct) {
